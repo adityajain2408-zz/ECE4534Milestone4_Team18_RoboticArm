@@ -61,20 +61,35 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include "system/common/sys_common.h"
 #include "app.h"
-#include "arm.h"
 #include "system_definitions.h"
+#include "debug.h"
+#include "sensor_queue.h"
 
 // *****************************************************************************
 // *****************************************************************************
 // Section: System Interrupt Vector Functions
 // *****************************************************************************
 // *****************************************************************************
-
  
+
 
 void IntHandlerDrvTmrInstance0(void)
 {
+    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    dbgOutputLoc(DLOC_ISR_ADC_ENTERED);
+    
+    //Grab value from ADC -> convert using routine in sensorQueue.c
+    int value = convertTable(DRV_ADC_SamplesRead(15));
+    SensorMessage sm = {value, "centimeters"};
+    
+    //Send to sensor queue
+    dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);
+    sendSensorData(sm, &pxHigherPriorityTaskWoken);
+    dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_AFTER);
+    
+    dbgOutputLoc(DLOC_ISR_ADC_LEAVING);
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_2);
+    portEND_SWITCHING_ISR(pxHigherPriorityTaskWoken);
 }
  /*******************************************************************************
  End of File

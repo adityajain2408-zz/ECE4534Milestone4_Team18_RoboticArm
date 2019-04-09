@@ -165,6 +165,8 @@ void SYS_Initialize ( void* data )
 
     /* Initialize the Application */
     APP_Initialize();
+    
+    /* Initialize the Arm*/
     ARM_Initialize();
 }
 

@@ -861,4 +861,6 @@ build/default/production/_ext/1688732426/system_interrupt.o:  \
  ../src/arm_control.h  \
 ../src/sensor_queue.h  \
 ../src/sensor_state.h  \
- ../src/system_config/default/system_definitions.h 
+ ../src/system_config/default/system_definitions.h  \
+../src/debug.h  \
+ ../src/sensor_queue.h 

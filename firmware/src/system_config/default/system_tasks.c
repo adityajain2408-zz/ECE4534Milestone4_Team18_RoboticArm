@@ -100,12 +100,12 @@ void SYS_Tasks ( void )
     xTaskCreate((TaskFunction_t) _APP_Tasks,
                 "APP Tasks",
                 1024, NULL, 1, NULL);
-
+    
     /* Create OS Thread for ARM Tasks. */
     xTaskCreate((TaskFunction_t) _ARM_Tasks,
                 "ARM Tasks",
                 1024, NULL, 1, NULL);
-
+    
     /**************
      * Start RTOS * 
      **************/
@@ -164,13 +164,13 @@ static void _APP_Tasks(void)
     Maintains state machine of ARM.
 */
 
-static void _ARM_Tasks(void)
-{
+ static void _ARM_Tasks(void)
+ {
     while(1)
     {
         ARM_Tasks();
     }
-}
+ }
 
 
 /*******************************************************************************
