@@ -12,46 +12,43 @@
 
 
 void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal, int * valSum){
-    int value = 0;
-    //ArmMessage am = {BASE_MOTOR, MOTOR_FORWARD};
     
-    switch(*state){       
+    switch(*state){
+        case SENSOR_READING_0:
+            dbgOutputVal(sensorVal);
+            
+            ArmMessage am_0 = {BASE_MOTOR, MOTOR_BACKWARD};
+            sendArmData(am_0);
+            
+            *state = SENSOR_READING_1;
+            break;
+            
         case SENSOR_READING_1:
-            //dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal);
             
-            value = convertToDegrees(DRV_ADC_SamplesRead(14));
-            dbgOutputVal(convertToDegrees(DRV_ADC_SamplesRead(14)));
-            
-            ArmMessage am_1 = {BASE_MOTOR, MOTOR_BACKWARD};
-            sendArmData(am_1);
-            
-            if (value <= 5)
+            if (sensorVal <= 5)
             {
                 ArmMessage am_1 = {BASE_MOTOR, MOTOR_STOP};
                 sendArmData(am_1);
+                ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
+                sendArmData(am_2);
                 *state = SENSOR_READING_2;
             }
-                    
-            *valSum = sensorVal;
+            *valSum += sensorVal;
             break;
         
         case SENSOR_READING_2:
-            //dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal);
             
-            value = convertToDegrees(DRV_ADC_SamplesRead(14));
-            dbgOutputVal(convertToDegrees(DRV_ADC_SamplesRead(14)));
-            
-            ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
-            sendArmData(am_2);
-            if (value >= 13)
+            if (sensorVal >= 12)
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
+                ArmMessage am_1 = {BASE_MOTOR, MOTOR_BACKWARD};
+                sendArmData(am_1);
                 *state = SENSOR_READING_1;
             }
-            
             *valSum += sensorVal;
-            //*state = SENSOR_READING_3;
             break;
             
         case SENSOR_READING_3:

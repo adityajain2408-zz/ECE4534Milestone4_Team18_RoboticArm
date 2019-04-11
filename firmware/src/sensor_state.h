@@ -20,7 +20,8 @@ extern "C" {
 
 /* States for the sensor state machine */
 typedef enum
-{
+{   
+    SENSOR_READING_0,
     SENSOR_READING_1,
     SENSOR_READING_2,
     SENSOR_READING_3,

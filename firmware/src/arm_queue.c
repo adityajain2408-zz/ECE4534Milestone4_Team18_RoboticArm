@@ -11,7 +11,6 @@ static QueueHandle_t armQueueHandle = NULL;
 
 unsigned int convertToDegrees(unsigned int ADCValue){
     unsigned int val = (5461 / (ADCValue - 17)) - 4;
-    
     return val > 127 ? 127 : val; 
 }
 

@@ -88,26 +88,26 @@ extern "C" {
 #define SYS_CLK_CONFIG_SECONDARY_XTAL       32768ul
    
 /*** Ports System Service Configuration ***/
-#define SYS_PORT_AD1PCFG        ~0xef00
+#define SYS_PORT_AD1PCFG        ~0xffff
 #define SYS_PORT_CNPUE          0x0
 #define SYS_PORT_CNEN           0x0
-#define SYS_PORT_A_TRIS         0xFBF7
+#define SYS_PORT_A_TRIS         0xFFF7
 #define SYS_PORT_A_LAT          0x0000
 #define SYS_PORT_A_ODC          0x0000
 
-#define SYS_PORT_B_TRIS         0xEFFF
+#define SYS_PORT_B_TRIS         0xFFFF
 #define SYS_PORT_B_LAT          0x0000
 #define SYS_PORT_B_ODC          0x0000
 
-#define SYS_PORT_C_TRIS         0xBFFB
-#define SYS_PORT_C_LAT          0x0004
+#define SYS_PORT_C_TRIS         0xBFFF
+#define SYS_PORT_C_LAT          0x0000
 #define SYS_PORT_C_ODC          0x0000
 
-#define SYS_PORT_D_TRIS         0xE296
-#define SYS_PORT_D_LAT          0x1009
+#define SYS_PORT_D_TRIS         0xF2BE
+#define SYS_PORT_D_LAT          0x0000
 #define SYS_PORT_D_ODC          0x0000
 
-#define SYS_PORT_E_TRIS         0xFF00
+#define SYS_PORT_E_TRIS         0xFF80
 #define SYS_PORT_E_LAT          0x0000
 #define SYS_PORT_E_ODC          0x0000
 
@@ -115,7 +115,7 @@ extern "C" {
 #define SYS_PORT_F_LAT          0x0000
 #define SYS_PORT_F_ODC          0x0000
 
-#define SYS_PORT_G_TRIS         0xFE3D
+#define SYS_PORT_G_TRIS         0xFE3F
 #define SYS_PORT_G_LAT          0x0000
 #define SYS_PORT_G_ODC          0x0000
 

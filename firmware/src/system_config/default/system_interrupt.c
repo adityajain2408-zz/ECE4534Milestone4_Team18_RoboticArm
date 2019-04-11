@@ -61,6 +61,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include "system/common/sys_common.h"
 #include "app.h"
+#include "arm.h"
 #include "system_definitions.h"
 #include "debug.h"
 #include "sensor_queue.h"
@@ -79,8 +80,8 @@ void IntHandlerDrvTmrInstance0(void)
     dbgOutputLoc(DLOC_ISR_ADC_ENTERED);
     
     //Grab value from ADC -> convert using routine in sensorQueue.c
-    int value = convertTable(DRV_ADC_SamplesRead(15));
-    SensorMessage sm = {value, "centimeters"};
+    int value = convertToDegrees(DRV_ADC_SamplesRead(14));
+    SensorMessage sm = {value, "degrees"};
     
     //Send to sensor queue
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);

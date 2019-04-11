@@ -90,8 +90,6 @@ void ARM_Tasks ( void )
     
     dbgOutputLoc(DLOC_BEFORE_WHILE_ARM);
     while(1){
-       //SensorMessage result = receiveSensorData();
-       //sensorState(&state, result, result.sensorValue, &valAvg);
         ArmMessage someArmMsg = receiveArmData();
         processArmMessage(someArmMsg.someMotorType, someArmMsg.someMotorDirection);
     }

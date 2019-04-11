@@ -91,10 +91,9 @@ void APP_Tasks ( void )
 {
     dbgOutputLoc(DLOC_TASK_ENTERED_APP);
     
-    SENSOR_STATES state = SENSOR_READING_1;
+    SENSOR_STATES state = SENSOR_READING_0;
     int valAvg = 0;
     dbgOutputLoc(DLOC_BEFORE_WHILE_APP);
-    //baseMotor_Bwd();
     
     while(1){
        SensorMessage result = receiveSensorData();

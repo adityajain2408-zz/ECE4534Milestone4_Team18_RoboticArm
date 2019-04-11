@@ -5,7 +5,7 @@
     <SystemStartScript dnOrder="1"/>
   </DisplayManager>
   <General>
-    <HarmonyPath dnOrder="0" path="../../microchip/harmony/v2_06"/>
+    <HarmonyPath dnOrder="0" path="../.."/>
     <Processor dnOrder="1" name="PIC32MX795F512L"/>
     <Board dnOrder="2" name=" "/>
     <ForceOptimization dnOrder="3" flag="true"/>
@@ -282,12 +282,13 @@
       <Template dnOrder="9">
         <Name dnOrder="0">FreeRTOSConfig.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">F439BB6EC93B75718F882B99617A40B6</Checksum>
+        <Checksum dnOrder="2">EA1C9BF2E112460D5C3702C93D91DF2D</Checksum>
       </Template>
       <Template dnOrder="10">
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">6274C8E0D189881F9F1917D35103D0D1</Checksum>
+        <ProjectFileChecksum dnOrder="3">E9293260720554BBCAA1372441BE2D55</ProjectFileChecksum>
       </Template>
       <Template dnOrder="11">
         <Name dnOrder="0">arm.c</Name>
@@ -297,6 +298,7 @@
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">1600054E56C192C87FAC6896D261E6F3</Checksum>
+        <ProjectFileChecksum dnOrder="3">5AD15FE371AB6507C1B0ADA70BB54B3E</ProjectFileChecksum>
       </Template>
       <Template dnOrder="13">
         <Name dnOrder="0">main.c</Name>
@@ -335,6 +337,7 @@
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">1829866F3D440BC1444E4BAB0D5C9372</Checksum>
+        <ProjectFileChecksum dnOrder="3">C101CFEAD6F8E7FD405A6D96DF443845</ProjectFileChecksum>
       </Template>
       <Template dnOrder="21">
         <Name dnOrder="0">app.h</Name>
@@ -358,24 +361,24 @@
     </Templates>
     <CompilerItems dnOrder="2">
       <C32-AS dnOrder="0">
-        <Include dnOrder="0" value="../../../../microchip/harmony/v2_06/third_party/rtos/FreeRTOS/Source/include"/>
-        <Include dnOrder="1" value="../../../../microchip/harmony/v2_06/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX"/>
+        <Include dnOrder="0" value="../../../../third_party/rtos/FreeRTOS/Source/include"/>
+        <Include dnOrder="1" value="../../../../third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX"/>
         <Include dnOrder="2" value="../src/system_config/default"/>
       </C32-AS>
       <C32 dnOrder="1">
-        <Include dnOrder="0" value="/Users/Aditya/Embedded Systems/ECE4534Milestone4_Team18_RoboticArm/firmware/src"/>
-        <Include dnOrder="1" value="/Users/Aditya/Embedded Systems/ECE4534Milestone4_Team18_RoboticArm/firmware/src/system_config/default"/>
-        <Include dnOrder="2" value="/Users/Aditya/Embedded Systems/ECE4534Milestone4_Team18_RoboticArm/firmware/src/default"/>
-        <Include dnOrder="3" value="/Users/Aditya/microchip/harmony/v2_06/framework"/>
-        <Include dnOrder="4" value="/Users/Aditya/Embedded Systems/ECE4534Milestone4_Team18_RoboticArm/firmware/src/system_config/default/framework"/>
-        <Include dnOrder="5" value="../../../../microchip/harmony/v2_06/third_party/rtos/FreeRTOS/Source/include"/>
-        <Include dnOrder="6" value="../../../../microchip/harmony/v2_06/third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX"/>
+        <Include dnOrder="0" value="C:\microchip\harmony\v2_06\apps\ECE4534Milestone4_Team18_RoboticArm\firmware\src"/>
+        <Include dnOrder="1" value="C:\microchip\harmony\v2_06\apps\ECE4534Milestone4_Team18_RoboticArm\firmware\src\system_config\default"/>
+        <Include dnOrder="2" value="C:\microchip\harmony\v2_06\apps\ECE4534Milestone4_Team18_RoboticArm\firmware\src\default"/>
+        <Include dnOrder="3" value="C:\microchip\harmony\v2_06\framework"/>
+        <Include dnOrder="4" value="C:\microchip\harmony\v2_06\apps\ECE4534Milestone4_Team18_RoboticArm\firmware\src\system_config\default\framework"/>
+        <Include dnOrder="5" value="../../../../third_party/rtos/FreeRTOS/Source/include"/>
+        <Include dnOrder="6" value="../../../../third_party/rtos/FreeRTOS/Source/portable/MPLAB/PIC32MX"/>
         <Include dnOrder="7" value="../src/system_config/default"/>
         <Define dnOrder="8" value="__XC"/>
       </C32>
     </CompilerItems>
     <Libraries dnOrder="3">
-      <Library dnOrder="0" value="../../../../microchip/harmony/v2_06/bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
+      <Library dnOrder="0" value="../../../../bin/framework/peripheral/PIC32MX795F512L_peripherals.a"/>
     </Libraries>
   </Manifest>
 </Configuration>
