@@ -26,8 +26,8 @@ typedef enum _m_direction {MOTOR_FORWARD, MOTOR_BACKWARD, MOTOR_STOP}
     
 //Arm Message Struct - Struct passed in arm queue    
 typedef struct {
-    MotorDirection someMotorDirection;
-    MotorType someMotorType;
+    MotorType motorType;
+    MotorDirection motorDirection;
 } ArmMessage;
 
 

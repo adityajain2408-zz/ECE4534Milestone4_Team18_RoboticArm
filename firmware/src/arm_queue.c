@@ -43,7 +43,7 @@ void sendArmData(ArmMessage data) {
     if (armQueueHandle == NULL){
         debugFail();
     }
-    if (xQueueSendToBack(armQueueHandle, &data, (TickType_t) 10) != pdPASS){ //If failed to pass 10 times 
+    if (xQueueSendToBack(armQueueHandle, &data, (TickType_t) 2) != pdPASS){ //Wait for armQueueHandle to create space if available
         debugFail();
     }
     dbgOutputLoc(ARM_QUEUE_TX_END);

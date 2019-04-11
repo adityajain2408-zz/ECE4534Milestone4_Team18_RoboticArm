@@ -91,7 +91,7 @@ void ARM_Tasks ( void )
     dbgOutputLoc(DLOC_BEFORE_WHILE_ARM);
     while(1){
         ArmMessage someArmMsg = receiveArmData();
-        processArmMessage(someArmMsg.someMotorType, someArmMsg.someMotorDirection);
+        processArmMessage(someArmMsg.motorType, someArmMsg.motorDirection);
     }
 }
 

@@ -50,7 +50,7 @@
         {
             baseMotor_Fwd();
         }
-        if (someMotorType == BASE_MOTOR && someMotorDirection == MOTOR_FORWARD)
+        if (someMotorType == BASE_MOTOR && someMotorDirection == MOTOR_BACKWARD)
         {
             baseMotor_Bwd();
         }
