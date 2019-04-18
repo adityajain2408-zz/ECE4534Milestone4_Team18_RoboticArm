@@ -18,10 +18,10 @@
 extern "C" {
 #endif
     
-typedef enum _m_type {BASE_MOTOR, GRIPPER_MOTOR} 
+typedef enum _m_type {BASE_MOTOR, GRIPPER_MOTOR, JOINT_MOTOR} 
     MotorType;
         
-typedef enum _m_direction {MOTOR_FORWARD, MOTOR_BACKWARD, MOTOR_STOP} 
+typedef enum _m_direction {MOTOR_FORWARD, MOTOR_BACKWARD, MOTOR_STOP, MOTOR_UP, MOTOR_DOWN} 
     MotorDirection;
     
 //Arm Message Struct - Struct passed in arm queue    

@@ -37,7 +37,7 @@ void sendSensorData(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken);
 }
 #endif
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif /* _SENSOR_QUEUE_H */
 
 /* *****************************************************************************
  End of File

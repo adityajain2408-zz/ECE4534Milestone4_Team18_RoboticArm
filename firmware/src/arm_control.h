@@ -26,6 +26,12 @@ void baseMotor_Stop();
 
 void baseMotor_Bwd();
 
+void jointMotor_Up();
+
+void jointMotor_Down();
+
+void jointMotor_Stop();
+
 void processArmMessage(MotorType someMotorType, MotorDirection someMotorDirection);
 
 /* Provide C++ Compatibility */
