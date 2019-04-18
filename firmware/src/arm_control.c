@@ -77,7 +77,8 @@
 
     
     void processArmMessage(MotorType someMotorType, MotorDirection someMotorDirection)
-    {
+    {   
+        //Base Motor
         if (someMotorType == BASE_MOTOR && someMotorDirection == MOTOR_FORWARD)
         {
             baseMotor_Fwd();
@@ -91,6 +92,7 @@
             baseMotor_Stop();
         }
         
+        //Joint Motor
         if (someMotorType == JOINT_MOTOR && someMotorDirection == MOTOR_STOP)
         {
             jointMotor_Stop();

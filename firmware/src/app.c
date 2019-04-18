@@ -95,7 +95,7 @@ void APP_Tasks ( void )
     
     while(1){
        SensorMessage result = receiveSensorData();
-       sensorState(&state, result, result.sensorValue);
+       sensorState(&state, result, result.sensorValue_base, result.sensorValue_joint);
     }
 }
 

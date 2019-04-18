@@ -11,13 +11,13 @@
 #include "sensor_state.h"
 
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal_base, int sensorVal_joint){
     
     switch(*state){
         case SENSOR_READING_0:
-            dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal_base);
             
-            if (sensorVal >= 10)
+            if (sensorVal_base >= 10)
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
@@ -32,9 +32,9 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
             break;
             
         case SENSOR_READING_1:
-            dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal_base);
             
-            if (sensorVal <= 4)
+            if (sensorVal_base <= 4)
             {
                 ArmMessage am_1 = {BASE_MOTOR, MOTOR_BACKWARD};
                 sendArmData(am_1);
@@ -43,9 +43,9 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
             break;
         
         case SENSOR_READING_2:
-            dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal_base);
             
-            if (sensorVal >= 15)
+            if (sensorVal_base >= 15)
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_2);
@@ -54,18 +54,17 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
             break;
             
         case SENSOR_READING_3:
-            dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal_joint);
             *state = SENSOR_READING_4;
             break;
             
         case SENSOR_READING_4:
-            dbgOutputVal(sensorVal);
+            dbgOutputVal(sensorVal_joint);
             *state = SENSOR_READING_5;
             break;
             
         case SENSOR_READING_5:
-            dbgOutputVal(sensorVal);
-            dbgUARTString("%u %s", 0, sensorMsg.unit);
+            dbgOutputVal(sensorVal_joint);
             *state = SENSOR_READING_1;
             break;
             

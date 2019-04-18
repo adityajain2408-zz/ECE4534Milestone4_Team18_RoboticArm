@@ -29,7 +29,7 @@ typedef enum
     SENSOR_READING_5,
 } SENSOR_STATES;
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal);
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal_base, int sensorVal_joint);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
