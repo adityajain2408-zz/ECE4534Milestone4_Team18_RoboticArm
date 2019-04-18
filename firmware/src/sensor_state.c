@@ -16,7 +16,8 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
     switch(*state){
         case SENSOR_READING_0:
             dbgOutputVal(sensorVal);
-            if (sensorVal >= 7)
+            
+            if (sensorVal >= 10)
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
@@ -44,7 +45,7 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal){
         case SENSOR_READING_2:
             dbgOutputVal(sensorVal);
             
-            if (sensorVal >= 11)
+            if (sensorVal >= 15)
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_2);
