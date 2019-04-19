@@ -72,8 +72,8 @@ extern "C" {
 
 #endif
 // DOM-IGNORE-END 
-
-
+    
+    
 /*******************************************************************************
   Function:
     void ARM_Initialize ( void )

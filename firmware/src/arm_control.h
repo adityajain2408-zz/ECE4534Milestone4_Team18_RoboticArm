@@ -32,6 +32,10 @@ void jointMotor_Down();
 
 void jointMotor_Stop();
 
+void read_basePot();
+
+void read_jointPot();
+
 void processArmMessage(MotorType someMotorType, MotorDirection someMotorDirection);
 
 /* Provide C++ Compatibility */

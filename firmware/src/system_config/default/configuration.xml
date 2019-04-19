@@ -262,12 +262,12 @@
       <Template dnOrder="5">
         <Name dnOrder="0">drv_adc_static.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/driver/adc</Path>
-        <Checksum dnOrder="2">07A77B5922C4B65037016A8E4606ECC3</Checksum>
+        <Checksum dnOrder="2">ED2C9C5C83B25F77250FC10B64A29916</Checksum>
       </Template>
       <Template dnOrder="6">
         <Name dnOrder="0">drv_adc_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/adc/src</Path>
-        <Checksum dnOrder="2">C8AE912C4B175E6363E75A765F629A1E</Checksum>
+        <Checksum dnOrder="2">7066C3A830E2C33A5019D91823080E94</Checksum>
       </Template>
       <Template dnOrder="7">
         <Name dnOrder="0">sys_devcon_local.h</Name>
@@ -336,7 +336,7 @@
       <Template dnOrder="20">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">BD284F2E164C308E3BD7C274B7EF9627</Checksum>
+        <Checksum dnOrder="2">D83BAECF2C1E085C1C7EDB4CC5CD00FC</Checksum>
       </Template>
       <Template dnOrder="21">
         <Name dnOrder="0">app.h</Name>

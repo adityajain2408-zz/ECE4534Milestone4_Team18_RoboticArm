@@ -80,9 +80,8 @@ void IntHandlerDrvTmrInstance0(void)
     dbgOutputLoc(DLOC_ISR_ADC_ENTERED);
     
     //Grab value from ADC -> convert using routine in sensorQueue.c
-    int base_value = convertToDegrees(DRV_ADC_SamplesRead(14));
-    int joint_value = convertToDegrees(DRV_ADC_SamplesRead(13));
-    SensorMessage sm = {base_value, joint_value, "degrees"};
+    int pot_value = convertToDegrees(DRV_ADC_SamplesRead(14));
+    SensorMessage sm = {pot_value, "degrees"};
     
     //Send to sensor queue
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);

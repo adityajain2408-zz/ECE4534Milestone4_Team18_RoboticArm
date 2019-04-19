@@ -21,8 +21,7 @@ extern "C" {
     
 //Sensor Message Struct - Struct passed in sensor queue    
 typedef struct {
-    int sensorValue_base;
-    int sensorValue_joint;
+    int potValue;
     char *unit;
 } SensorMessage;
 

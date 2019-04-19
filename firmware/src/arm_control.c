@@ -50,8 +50,8 @@
     void jointMotor_Up()
     {
         PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, true); //Turning the LED on 
-        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_1, false); // green off - relay module - pic pin # 5
-        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_2, true); // black on - relay module - pic pin # 6
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_1, true); // green on - relay module - pic pin # 5
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_2, false); // black off - relay module - pic pin # 6
               
     }
 
@@ -61,8 +61,8 @@
     void jointMotor_Down()
     {
         PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, true); //Turning the LED on 
-        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_1, true); // green on - relay module - pic pin # 5
-        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_2, false); //black off - relay module - pic pin # 6
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_1, false); // green off - relay module - pic pin # 5
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_2, true); //black on - relay module - pic pin # 6
     }
 
     /*
@@ -74,7 +74,22 @@
         PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_1, false); // green off - relay module  - pic pin #5 
         PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, false); //Turning the LED off 
     }
-
+    
+    /*
+     * Start Reading Joint Pot
+     */
+    void read_jointPot()
+    {
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_E, PORTS_BIT_POS_8, true); // Brown on - relay module  - pic pin #3 
+    }
+    
+    /*
+     * Start Reading Joint
+     */
+    void read_basePot()
+    {
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_E, PORTS_BIT_POS_8, false); // Brown off - relay module  - pic pin #3 
+    }
     
     void processArmMessage(MotorType someMotorType, MotorDirection someMotorDirection)
     {   

@@ -11,13 +11,14 @@
 #include "sensor_state.h"
 
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal_base, int sensorVal_joint){
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
     
     switch(*state){
         case SENSOR_READING_0:
-            dbgOutputVal(sensorVal_base);
+            read_basePot();
+            dbgOutputVal(potVal);
             
-            if (sensorVal_base >= 10)
+            if (potVal >= 9)
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
@@ -32,9 +33,9 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal_b
             break;
             
         case SENSOR_READING_1:
-            dbgOutputVal(sensorVal_base);
+            dbgOutputVal(potVal);
             
-            if (sensorVal_base <= 4)
+            if (potVal <= 3)
             {
                 ArmMessage am_1 = {BASE_MOTOR, MOTOR_BACKWARD};
                 sendArmData(am_1);
@@ -43,29 +44,60 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int sensorVal_b
             break;
         
         case SENSOR_READING_2:
-            dbgOutputVal(sensorVal_base);
+            dbgOutputVal(potVal);
             
-            if (sensorVal_base >= 15)
+            if (potVal >= 14)
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_2);
-                *state = SENSOR_READING_1;
+                *state = SENSOR_READING_3;
             }
             break;
             
         case SENSOR_READING_3:
-            dbgOutputVal(sensorVal_joint);
+            dbgOutputVal(potVal);
+            ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
+            sendArmData(am_2);
+            read_jointPot();
             *state = SENSOR_READING_4;
             break;
             
         case SENSOR_READING_4:
-            dbgOutputVal(sensorVal_joint);
-            *state = SENSOR_READING_5;
+            dbgOutputVal(potVal);
+            
+            if (potVal <= 6)
+            {
+                ArmMessage am = {JOINT_MOTOR, MOTOR_UP};
+                sendArmData(am);
+                *state = SENSOR_READING_5;
+            }
             break;
             
         case SENSOR_READING_5:
-            dbgOutputVal(sensorVal_joint);
-            *state = SENSOR_READING_1;
+            dbgOutputVal(potVal);
+            
+            if (potVal <= 3)
+            {
+                ArmMessage am_1 = {JOINT_MOTOR, MOTOR_DOWN};
+                sendArmData(am_1);
+                *state = SENSOR_READING_6;
+            }
+            break;
+        
+        case SENSOR_READING_6:
+            dbgOutputVal(potVal);
+            
+            if (potVal >= 6)
+            {
+                ArmMessage am_2 = {JOINT_MOTOR, MOTOR_STOP};
+                sendArmData(am_2);
+                *state = SENSOR_READING_7;
+            }
+            break;
+        
+        case SENSOR_READING_7:
+            dbgOutputVal(potVal);
+            *state = SENSOR_READING_7;
             break;
             
         default:
