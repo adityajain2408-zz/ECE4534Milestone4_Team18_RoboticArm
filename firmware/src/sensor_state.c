@@ -22,61 +22,63 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
+                *state = SENSOR_READING_1;
             }
             else
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_BACKWARD};
                 sendArmData(am_0);
+                *state = SENSOR_READING_2;
             }
             
-            *state = SENSOR_READING_1;
+            
             break;
             
-        case SENSOR_READING_1:
+        case SENSOR_READING_1: //STOP base motor coming from left
             dbgOutputVal(potVal);
             
             if (potVal <= 3)
             {
-                ArmMessage am_1 = {BASE_MOTOR, MOTOR_BACKWARD};
-                sendArmData(am_1);
-                *state = SENSOR_READING_2;
+                ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
+                sendArmData(am_2);
+                read_jointPot();
+                *state = SENSOR_READING_5;
             }
             break;
         
-        case SENSOR_READING_2:
+        case SENSOR_READING_2: //STOP base motor coming from right
             dbgOutputVal(potVal);
             
             if (potVal >= 14)
             {
-                ArmMessage am_2 = {BASE_MOTOR, MOTOR_FORWARD};
+                ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
-                *state = SENSOR_READING_3;
+                read_jointPot();
+                *state = SENSOR_READING_5;
             }
             break;
             
-        case SENSOR_READING_3:
+        case SENSOR_READING_3: // gripper
             dbgOutputVal(potVal);
-            ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
-            sendArmData(am_2);
             read_jointPot();
             *state = SENSOR_READING_4;
             break;
             
-        case SENSOR_READING_4:
+        case SENSOR_READING_4: //Joint UP
             dbgOutputVal(potVal);
             
             if (potVal <= 6)
             {
                 ArmMessage am = {JOINT_MOTOR, MOTOR_UP};
                 sendArmData(am);
-                *state = SENSOR_READING_5;
+                *state = SENSOR_READING_7;
             }
             break;
             
-        case SENSOR_READING_5:
+        case SENSOR_READING_5: //Joint DOWN
             dbgOutputVal(potVal);
             
-            if (potVal <= 3)
+            if (potVal >= 3)
             {
                 ArmMessage am_1 = {JOINT_MOTOR, MOTOR_DOWN};
                 sendArmData(am_1);
@@ -84,20 +86,29 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
             }
             break;
         
-        case SENSOR_READING_6:
+        case SENSOR_READING_6: //STOP Joint Motor coming from up (Joint Position DOWN)
             dbgOutputVal(potVal);
             
             if (potVal >= 6)
             {
                 ArmMessage am_2 = {JOINT_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
-                *state = SENSOR_READING_7;
+                read_basePot();
+                *state = SENSOR_READING_3;
             }
             break;
         
-        case SENSOR_READING_7:
+        case SENSOR_READING_7: //STOP Joint Motor coming from down (Joint Position UP)
             dbgOutputVal(potVal);
-            *state = SENSOR_READING_7;
+            
+            if (potVal <= 3)
+            {
+                ArmMessage am_2 = {JOINT_MOTOR, MOTOR_STOP};
+                sendArmData(am_2);
+                read_basePot();
+                *state = SENSOR_READING_0;
+            }
+            
             break;
             
         default:
