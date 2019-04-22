@@ -60,6 +60,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "task.h"
 #include "app.h"
 #include "arm.h"
+#include "communication_tx.h"
+#include "communication_rx.h"
+#include "communication_stats.h"
+#include "communication_test.h"
 
 
 // DOM-IGNORE-BEGIN

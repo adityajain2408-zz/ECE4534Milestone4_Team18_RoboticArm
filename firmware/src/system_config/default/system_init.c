@@ -168,6 +168,10 @@ void SYS_Initialize ( void* data )
     
     /* Initialize the Arm*/
     ARM_Initialize();
+    COMMUNICATION_TX_Initialize();
+    COMMUNICATION_RX_Initialize();
+    COMMUNICATION_STATS_Initialize();
+    COMMUNICATION_TEST_Initialize();
 }
 
 

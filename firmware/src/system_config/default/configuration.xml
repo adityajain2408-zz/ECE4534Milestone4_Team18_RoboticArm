@@ -250,109 +250,141 @@
         <Checksum dnOrder="2">B6CBE423647A8929F1046AB6F68B1BD1</Checksum>
       </Template>
       <Template dnOrder="3">
+        <Name dnOrder="0">communication_test.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="4">
         <Name dnOrder="0">drv_tmr_static.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/driver/tmr</Path>
         <Checksum dnOrder="2">D22AC818237042BB7D641DC78DE17E8D</Checksum>
       </Template>
-      <Template dnOrder="4">
+      <Template dnOrder="5">
         <Name dnOrder="0">drv_tmr_mapping.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/tmr/src</Path>
         <Checksum dnOrder="2">314E75640CA6EE8232D80D0B0DC4F1D8</Checksum>
       </Template>
-      <Template dnOrder="5">
+      <Template dnOrder="6">
+        <Name dnOrder="0">communication_test.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="7">
         <Name dnOrder="0">drv_adc_static.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/driver/adc</Path>
         <Checksum dnOrder="2">ED2C9C5C83B25F77250FC10B64A29916</Checksum>
       </Template>
-      <Template dnOrder="6">
+      <Template dnOrder="8">
         <Name dnOrder="0">drv_adc_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/adc/src</Path>
         <Checksum dnOrder="2">7066C3A830E2C33A5019D91823080E94</Checksum>
       </Template>
-      <Template dnOrder="7">
+      <Template dnOrder="9">
+        <Name dnOrder="0">communication_tx.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="10">
         <Name dnOrder="0">sys_devcon_local.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">B66F9B4DBD85DA7F9DE775E864E01395</Checksum>
       </Template>
-      <Template dnOrder="8">
+      <Template dnOrder="11">
         <Name dnOrder="0">sys_devcon.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/system/devcon</Path>
         <Checksum dnOrder="2">07580DCDEF89D9C79B062544109C5367</Checksum>
       </Template>
-      <Template dnOrder="9">
+      <Template dnOrder="12">
         <Name dnOrder="0">FreeRTOSConfig.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">EA1C9BF2E112460D5C3702C93D91DF2D</Checksum>
       </Template>
-      <Template dnOrder="10">
+      <Template dnOrder="13">
         <Name dnOrder="0">system_interrupt.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">6274C8E0D189881F9F1917D35103D0D1</Checksum>
+        <Checksum dnOrder="2">588A26386634DA08C1B45FE39AEDF08C</Checksum>
         <ProjectFileChecksum dnOrder="3">E9293260720554BBCAA1372441BE2D55</ProjectFileChecksum>
       </Template>
-      <Template dnOrder="11">
+      <Template dnOrder="14">
         <Name dnOrder="0">arm.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
       </Template>
-      <Template dnOrder="12">
+      <Template dnOrder="15">
         <Name dnOrder="0">system_init.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">1600054E56C192C87FAC6896D261E6F3</Checksum>
+        <Checksum dnOrder="2">536DA6E4006BC4F508609E49544C0615</Checksum>
         <ProjectFileChecksum dnOrder="3">5AD15FE371AB6507C1B0ADA70BB54B3E</ProjectFileChecksum>
       </Template>
-      <Template dnOrder="13">
+      <Template dnOrder="16">
         <Name dnOrder="0">main.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
       </Template>
-      <Template dnOrder="14">
+      <Template dnOrder="17">
         <Name dnOrder="0">system_definitions.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">900B96DD8A1099F719C6021EF15D44A2</Checksum>
+        <Checksum dnOrder="2">8B2A2A9EFD23626993A4BEBC9B3A2E77</Checksum>
       </Template>
-      <Template dnOrder="15">
+      <Template dnOrder="18">
         <Name dnOrder="0">system_exceptions.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">9836A04F3E98D3971DB91DF539160F34</Checksum>
       </Template>
-      <Template dnOrder="16">
+      <Template dnOrder="19">
+        <Name dnOrder="0">communication_tx.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="20">
+        <Name dnOrder="0">communication_rx.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="21">
         <Name dnOrder="0">sys_devcon.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">54ADBD4A35BCA03C42C74182FCE41849</Checksum>
       </Template>
-      <Template dnOrder="17">
+      <Template dnOrder="22">
         <Name dnOrder="0">app.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app</Path>
       </Template>
-      <Template dnOrder="18">
+      <Template dnOrder="23">
+        <Name dnOrder="0">communication_rx.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="24">
+        <Name dnOrder="0">communication_stats.c</Name>
+        <Path dnOrder="1">Source&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="25">
+        <Name dnOrder="0">communication_stats.h</Name>
+        <Path dnOrder="1">Header&amp;#160;Files/app</Path>
+      </Template>
+      <Template dnOrder="26">
         <Name dnOrder="0">system_tasks.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">415E5D706CFD89E5CF69630852BE027E</Checksum>
+        <Checksum dnOrder="2">3B9293B02AC8C90189350151CC1B9267</Checksum>
       </Template>
-      <Template dnOrder="19">
+      <Template dnOrder="27">
         <Name dnOrder="0">sys_devcon_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/system/devcon/src</Path>
         <Checksum dnOrder="2">5141464248E33ABE9E7D144A2D4DC129</Checksum>
       </Template>
-      <Template dnOrder="20">
+      <Template dnOrder="28">
         <Name dnOrder="0">system_config.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default</Path>
-        <Checksum dnOrder="2">D83BAECF2C1E085C1C7EDB4CC5CD00FC</Checksum>
+        <Checksum dnOrder="2">5CE3A4F52577BC53C51064D0AA204B41</Checksum>
       </Template>
-      <Template dnOrder="21">
+      <Template dnOrder="29">
         <Name dnOrder="0">app.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app</Path>
       </Template>
-      <Template dnOrder="22">
+      <Template dnOrder="30">
         <Name dnOrder="0">drv_tmr_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/tmr/src</Path>
         <Checksum dnOrder="2">226CB906265B8C6C2FF146EDC3C2380E</Checksum>
       </Template>
-      <Template dnOrder="23">
+      <Template dnOrder="31">
         <Name dnOrder="0">rtos_hooks.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default</Path>
         <Checksum dnOrder="2">FA52743264536E5207D2ADBE57B48D05</Checksum>
       </Template>
-      <Template dnOrder="24">
+      <Template dnOrder="32">
         <Name dnOrder="0">sys_clk_pic32mx.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/system/clk/src</Path>
         <Checksum dnOrder="2">FDF6C8068CFFAEEC5F8537A8D6514230</Checksum>

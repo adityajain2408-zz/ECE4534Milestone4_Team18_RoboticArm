@@ -103,7 +103,7 @@ extern "C" {
 #define SYS_PORT_C_LAT          0x0000
 #define SYS_PORT_C_ODC          0x0000
 
-#define SYS_PORT_D_TRIS         0xF2B8
+#define SYS_PORT_D_TRIS         0xE2B0
 #define SYS_PORT_D_LAT          0x0000
 #define SYS_PORT_D_ODC          0x0000
 
@@ -167,6 +167,14 @@ extern "C" {
 /*** Application Instance 0 Configuration ***/
 
 /*** Application Instance 1 Configuration ***/
+
+/*** Application Instance 2 Configuration ***/
+
+/*** Application Instance 3 Configuration ***/
+
+/*** Application Instance 4 Configuration ***/
+
+/*** Application Instance 5 Configuration ***/
 
 //DOM-IGNORE-BEGIN
 #ifdef __cplusplus

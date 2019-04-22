@@ -56,6 +56,10 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "system_definitions.h"
 #include "app.h"
 #include "arm.h"
+#include "communication_tx.h"
+#include "communication_rx.h"
+#include "communication_stats.h"
+#include "communication_test.h"
 
 
 // *****************************************************************************
@@ -71,6 +75,10 @@ static void _SYS_Tasks ( void );
  
 static void _APP_Tasks(void);
 static void _ARM_Tasks(void);
+static void _COMMUNICATION_TX_Tasks(void);
+static void _COMMUNICATION_RX_Tasks(void);
+static void _COMMUNICATION_STATS_Tasks(void);
+static void _COMMUNICATION_TEST_Tasks(void);
 
 
 // *****************************************************************************
@@ -100,12 +108,32 @@ void SYS_Tasks ( void )
     xTaskCreate((TaskFunction_t) _APP_Tasks,
                 "APP Tasks",
                 1024, NULL, 1, NULL);
-    
+
     /* Create OS Thread for ARM Tasks. */
     xTaskCreate((TaskFunction_t) _ARM_Tasks,
                 "ARM Tasks",
                 1024, NULL, 1, NULL);
-    
+
+    /* Create OS Thread for COMMUNICATION_TX Tasks. */
+    xTaskCreate((TaskFunction_t) _COMMUNICATION_TX_Tasks,
+                "COMMUNICATION_TX Tasks",
+                1024, NULL, 1, NULL);
+
+    /* Create OS Thread for COMMUNICATION_RX Tasks. */
+    xTaskCreate((TaskFunction_t) _COMMUNICATION_RX_Tasks,
+                "COMMUNICATION_RX Tasks",
+                1024, NULL, 1, NULL);
+
+    /* Create OS Thread for COMMUNICATION_STATS Tasks. */
+    xTaskCreate((TaskFunction_t) _COMMUNICATION_STATS_Tasks,
+                "COMMUNICATION_STATS Tasks",
+                1024, NULL, 1, NULL);
+
+    /* Create OS Thread for COMMUNICATION_TEST Tasks. */
+    xTaskCreate((TaskFunction_t) _COMMUNICATION_TEST_Tasks,
+                "COMMUNICATION_TEST Tasks",
+                1024, NULL, 1, NULL);
+
     /**************
      * Start RTOS * 
      **************/
@@ -164,13 +192,81 @@ static void _APP_Tasks(void)
     Maintains state machine of ARM.
 */
 
- static void _ARM_Tasks(void)
- {
+static void _ARM_Tasks(void)
+{
     while(1)
     {
         ARM_Tasks();
     }
- }
+}
+
+
+/*******************************************************************************
+  Function:
+    void _COMMUNICATION_TX_Tasks ( void )
+
+  Summary:
+    Maintains state machine of COMMUNICATION_TX.
+*/
+
+static void _COMMUNICATION_TX_Tasks(void)
+{
+    while(1)
+    {
+        COMMUNICATION_TX_Tasks();
+    }
+}
+
+
+/*******************************************************************************
+  Function:
+    void _COMMUNICATION_RX_Tasks ( void )
+
+  Summary:
+    Maintains state machine of COMMUNICATION_RX.
+*/
+
+static void _COMMUNICATION_RX_Tasks(void)
+{
+    while(1)
+    {
+        COMMUNICATION_RX_Tasks();
+    }
+}
+
+
+/*******************************************************************************
+  Function:
+    void _COMMUNICATION_STATS_Tasks ( void )
+
+  Summary:
+    Maintains state machine of COMMUNICATION_STATS.
+*/
+
+static void _COMMUNICATION_STATS_Tasks(void)
+{
+    while(1)
+    {
+        COMMUNICATION_STATS_Tasks();
+    }
+}
+
+
+/*******************************************************************************
+  Function:
+    void _COMMUNICATION_TEST_Tasks ( void )
+
+  Summary:
+    Maintains state machine of COMMUNICATION_TEST.
+*/
+
+static void _COMMUNICATION_TEST_Tasks(void)
+{
+    while(1)
+    {
+        COMMUNICATION_TEST_Tasks();
+    }
+}
 
 
 /*******************************************************************************

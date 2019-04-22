@@ -863,4 +863,19 @@ build/default/production/_ext/1688732426/system_exceptions.o:  \
 ../src/sensor_queue.h  \
 ../src/sensor_state.h  \
  ../src/arm.h  \
-../../../../framework/system/debug/sys_debug.h 
+../src/communication_tx.h  \
+../src/wifly_uart_queues.h  \
+ ../src/communication_tx_routines.h  \
+../src/communication_tx.h  \
+ ../src/communication_send_queue.h  \
+../src/communication_checksum.h  \
+ ../src/communication_rx.h  \
+../src/communication_rx_state_machine.h  \
+ ../src/jsmn.h  \
+../src/communication_json_parse.h  \
+ ../src/communication_stat_calculation.h  \
+../src/communication_stats.h  \
+ ../src/statistics_queue.h  \
+../src/communication_test.h  \
+ ../src/test_thread_queue.h  \
+ ../../../../framework/system/debug/sys_debug.h 

@@ -37,6 +37,19 @@
         <itemPath>../src/debug.h</itemPath>
         <itemPath>../src/sensor_queue.h</itemPath>
         <itemPath>../src/sensor_state.h</itemPath>
+        <itemPath>../src/communication_tx.h</itemPath>
+        <itemPath>../src/communication_rx.h</itemPath>
+        <itemPath>../src/communication_stats.h</itemPath>
+        <itemPath>../src/communication_test.h</itemPath>
+        <itemPath>../src/communication_checksum.h</itemPath>
+        <itemPath>../src/communication_json_parse.h</itemPath>
+        <itemPath>../src/communication_rx_state_machine.h</itemPath>
+        <itemPath>../src/communication_send_queue.h</itemPath>
+        <itemPath>../src/communication_stat_calculation.h</itemPath>
+        <itemPath>../src/communication_tx_routines.h</itemPath>
+        <itemPath>../src/jsmn.h</itemPath>
+        <itemPath>../src/test_thread_queue.h</itemPath>
+        <itemPath>../src/wifly_uart_queues.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="driver" projectFiles="true">
@@ -173,6 +186,20 @@
         <itemPath>../src/main.c</itemPath>
         <itemPath>../src/sensor_queue.c</itemPath>
         <itemPath>../src/sensor_state.c</itemPath>
+        <itemPath>../src/communication_tx.c</itemPath>
+        <itemPath>../src/communication_rx.c</itemPath>
+        <itemPath>../src/communication_stats.c</itemPath>
+        <itemPath>../src/communication_test.c</itemPath>
+        <itemPath>../src/communication_checksum.c</itemPath>
+        <itemPath>../src/communication_json_parse.c</itemPath>
+        <itemPath>../src/communication_rx_state_machine.c</itemPath>
+        <itemPath>../src/communication_send_queue.c</itemPath>
+        <itemPath>../src/communication_stat_calculation.c</itemPath>
+        <itemPath>../src/jsmn.c</itemPath>
+        <itemPath>../src/statistics_queue.c</itemPath>
+        <itemPath>../src/test_thread_queue.c</itemPath>
+        <itemPath>../src/wifly_uart_queues.c</itemPath>
+        <itemPath>../src/communication_tx_routines.c</itemPath>
       </logicalFolder>
       <logicalFolder name="f1" displayName="framework" projectFiles="true">
         <logicalFolder name="f1" displayName="osal" projectFiles="true">
