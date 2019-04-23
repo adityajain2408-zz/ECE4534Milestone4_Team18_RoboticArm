@@ -87,7 +87,7 @@ void COMMUNICATION_TEST_Tasks ( void )
                 transmit_message.method = "POST";
                 transmit_message.url = "arm_block_update";
                 transmit_message.parameters = "pic2";
-                transmit_message.body = "\"msg\": \"1\"";
+                transmit_message.body = "\"msg\": \"Block picked up\"";
                 sendSendValue(transmit_message);
             }
             else if(*test_message.msg == '2') //tell server that the block is dropped off
@@ -95,7 +95,7 @@ void COMMUNICATION_TEST_Tasks ( void )
                 transmit_message.method = "POST";
                 transmit_message.url = "arm_block_update";
                 transmit_message.parameters = "pic2";
-                transmit_message.body = "\"msg\": \"2\"";
+                transmit_message.body = "\"msg\": \"Block dropped off\"";
                 sendSendValue(transmit_message);
             }
         } 

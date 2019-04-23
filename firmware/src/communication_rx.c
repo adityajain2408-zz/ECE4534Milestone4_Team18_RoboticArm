@@ -81,9 +81,9 @@ void COMMUNICATION_RX_Tasks(void) {
                 //extract data
                 char msg[512];
                 if(json_getVal(json_statement, tokens, rVal, "msg", msg) == 0){
-                    TestThreadMessage data;
-                    data.msg = msg;
-                    sendTestThreadValue(data);
+                    //TestThreadMessage data;
+                    //data.msg = msg;
+                    //sendTestThreadValue(data);
                 }
             }
         }
