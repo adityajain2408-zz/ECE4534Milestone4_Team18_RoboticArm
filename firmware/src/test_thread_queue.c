@@ -64,7 +64,7 @@ void sendTestThreadValue(TestThreadMessage data){
     if (testThreadQueueHandle == NULL){
         debugFail();
     }
-    if (xQueueSend(testThreadQueueHandle, &data, portMAX_DELAY) != pdTRUE){
+    if (xQueueSend(testThreadQueueHandle, &data, (TickType_t) 10) != pdPASS){
         debugFail();
     }
     

@@ -100,8 +100,6 @@ void COMMUNICATION_STATS_Tasks ( void )
             rec = message.received;
             saved.missed += message.missed;
         }
-        
-        
     }
 }
 

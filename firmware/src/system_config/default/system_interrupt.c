@@ -68,6 +68,8 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 #include "communication_test.h"
 #include "system_definitions.h"
 #include "debug.h"
+#include "wifly_uart_queues.h"
+#include "limits.h"
 #include "sensor_queue.h"
 
 // *****************************************************************************
@@ -80,7 +82,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 void IntHandlerDrvTmrInstance0(void)
 {
-    BaseType_t pxHigherPriorityTaskWoken = pdFALSE;
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
     dbgOutputLoc(DLOC_ISR_ADC_ENTERED);
     
     //Grab value from ADC -> convert using routine in sensorQueue.c
@@ -89,13 +91,82 @@ void IntHandlerDrvTmrInstance0(void)
     
     //Send to sensor queue
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);
-    sendSensorData(sm, &pxHigherPriorityTaskWoken);
+    sendSensorData(sm, &xHigherPriorityTaskWoken);
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_AFTER);
     
     dbgOutputLoc(DLOC_ISR_ADC_LEAVING);
+    
+    
+    dbgOutputLoc(DLOC_ISR_TIMER_ENTERED);
+    
+    static int count = 0;
+    //Every 2 seconds send statistics
+    //Every 0.1 seconds send a message
+    if(count % 20 == 0){
+        StatsMessage time = {INT_MIN, INT_MIN, INT_MIN};
+        sendStatsValueFromISR(time, &xHigherPriorityTaskWoken);
+    } else {
+        TestThreadMessage d = {"0"};
+        sendTestThreadValueFromISR(d, &xHigherPriorityTaskWoken);
+    }
+    count++;
+    
+    dbgOutputLoc(DLOC_ISR_TIMER_LEAVING);
+    
     PLIB_INT_SourceFlagClear(INT_ID_0,INT_SOURCE_TIMER_2);
-    portEND_SWITCHING_ISR(pxHigherPriorityTaskWoken);
+    portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
 }
+
+void __ISR(_UART_1_VECTOR, IPL1AUTO) UART1Handler(void)
+{
+    dbgOutputLoc(DLOC_ISR_UART_ENTERED);
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    
+    //check for errors
+    if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_ERROR))
+    {
+        debugFail();
+    }
+    
+    //receiving on UART 1
+    else if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_RECEIVE)){
+        dbgOutputLoc(DLOC_ISR_UART_RX_ENTERED);
+        if (PLIB_USART_ReceiverDataIsAvailable(USART_ID_1))
+        {
+            dbgOutputLoc(DLOC_ISR_UART_RX_QUEUE_TRANS);
+            char c = PLIB_USART_ReceiverByteReceive(USART_ID_1);
+            sendWifly_rx_ValueFromISR(c, &xHigherPriorityTaskWoken);
+            PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_RECEIVE);
+        }
+        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_RECEIVE);
+    }
+    
+    //transmitting on UART 1
+    else if (PLIB_INT_SourceFlagGet(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT))
+    {
+        dbgOutputLoc(DLOC_ISR_UART_TX_ENTERED);
+        
+        if (wifly_tx_QueueIsEmptyFromISR()) //something went wrong, return
+        {
+            PLIB_INT_SourceDisable(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+        }
+        else if (PLIB_USART_TransmitterIsEmpty(USART_ID_1)) //we can send something
+        {
+            dbgOutputLoc(DLOC_ISR_UART_TX_QUEUE_RECV);
+            char outVal = receiveWifly_tx_ValueFromISR(&xHigherPriorityTaskWoken); 
+            PLIB_USART_TransmitterByteSend(USART_ID_1, outVal);
+            PLIB_INT_SourceDisable(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+        }
+        PLIB_INT_SourceFlagClear(INT_ID_0, INT_SOURCE_USART_1_TRANSMIT);
+    }
+    else
+    {
+        debugFail();
+    }
+    dbgOutputLoc(DLOC_ISR_UART_LEAVING);
+    portEND_SWITCHING_ISR(xHigherPriorityTaskWoken);
+}
+
  /*******************************************************************************
  End of File
 */

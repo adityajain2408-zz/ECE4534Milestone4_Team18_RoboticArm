@@ -33,7 +33,7 @@ void createHTTPString(char* method, char* url, char* params, char* body, int seq
     if(strcmp(method, "GET") == 0){
         //GET - add sequence and checksum to params ?sequence=%d&pic=1
         char param_text[100];
-        sprintf(param_text, "sequence=%d&pic=%s&want=%s", sequence, params, "pic1");
+        sprintf(param_text, "sequence=%d&pic=%s&want=%s", sequence, params, "pic2");
         sprintf(http_formatted, "%s /%s?%s HTTP/1.1\r\nHost: 192.168.0.10\r\nChecksum: %d\r\n\r\n",
                 method,
                 url,
@@ -42,7 +42,7 @@ void createHTTPString(char* method, char* url, char* params, char* body, int seq
     } else {
         //PUT/POST
         static char json_body[400];
-        sprintf(json_body, "{%s, \"sent\": %d, \"pic\": \"pic1\", \"sequence\": %d}", body, sequence, sequence);
+        sprintf(json_body, "{%s, \"sent\": %d, \"pic\": \"pic2\", \"sequence\": %d}", body, sequence, sequence);
         sprintf(http_formatted, "%s /%s HTTP/1.1\r\nHost: 192.168.0.10\r\nContent-Type: application/json\r\nContent-Length: %d\r\nChecksum: %d\r\n\r\n%s\r\n\r\n",
                 method,
                 url,

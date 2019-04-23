@@ -22,12 +22,18 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
+                TestThreadMessage d = {"1"}; //Transmit value that arm has picked up the block
+                sendTestThreadValue(d);
+                
                 *state = SENSOR_READING_1;
             }
             else
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_BACKWARD};
                 sendArmData(am_0);
+                
+                TestThreadMessage d = {"2"}; //Transmit value that arm has dropped the block
+                sendTestThreadValue(d);
                 *state = SENSOR_READING_2;
             }
             

@@ -71,11 +71,37 @@ void COMMUNICATION_TEST_Tasks ( void )
     dbgOutputLoc(TEST_ENTERED_WHILE);
     while (1){
         TestThreadMessage test_message = receiveTestThreadValue();
+        
         if(test_message.msg != NULL){
-            //We have gotten a response back from the server
-        } else {
+            //We want to send something specific to the server
+            SendMessage transmit_message = {"", "", "", ""}; //initializing message to be sent 
+            if(*test_message.msg == '0') // ask server the block details
+            {
+                transmit_message.method = "GET";
+                transmit_message.url = "arm_block_status";
+                transmit_message.parameters = "pic2";
+                sendSendValue(transmit_message);
+            }
+            else if(*test_message.msg == '1') // tell server that the block is picked up
+            {
+                transmit_message.method = "POST";
+                transmit_message.url = "arm_block_update";
+                transmit_message.parameters = "pic2";
+                transmit_message.body = "\"msg\": \"1\"";
+                sendSendValue(transmit_message);
+            }
+            else if(*test_message.msg == '2') //tell server that the block is dropped off
+            {
+                transmit_message.method = "POST";
+                transmit_message.url = "arm_block_update";
+                transmit_message.parameters = "pic2";
+                transmit_message.body = "\"msg\": \"2\"";
+                sendSendValue(transmit_message);
+            }
+        } 
+        else 
+        {
             SendMessage test_message = {"", "", "", ""};
-            //missed, sent, received, sequence
             switch(message_switch){
                 case(0):
                     test_message.method = "POST";
@@ -86,7 +112,7 @@ void COMMUNICATION_TEST_Tasks ( void )
                 case(1):
                     test_message.method = "GET";
                     test_message.url = "download";
-                    test_message.parameters = "pic1";
+                    test_message.parameters = "pic2";
                     break;
                     
                 case(2):
@@ -100,7 +126,7 @@ void COMMUNICATION_TEST_Tasks ( void )
                 case(3):
                     test_message.method = "GET";
                     test_message.url = "download";
-                    test_message.parameters = "pic1";
+                    test_message.parameters = "pic2";
                     break;
             }
             sendSendValue(test_message);
