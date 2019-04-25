@@ -22,6 +22,7 @@ extern "C" {
 //Sensor Message Struct - Struct passed in sensor queue    
 typedef struct {
     int potValue;
+    char *msg;
     char *unit;
 } SensorMessage;
 
@@ -30,8 +31,10 @@ void createSensorQueue();
 
 SensorMessage receiveSensorData();
 
-void sendSensorData(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken);
-    
+void sendSensorDataFromISR(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken);
+
+void sendSensorData(SensorMessage data);
+
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }

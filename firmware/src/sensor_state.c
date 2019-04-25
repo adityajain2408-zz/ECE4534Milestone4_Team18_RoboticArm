@@ -11,7 +11,7 @@
 #include "sensor_state.h"
 
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int * count){
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int * count, char * status){
     switch(*state){
         case SENSOR_READING_0:
             read_basePot();
@@ -21,21 +21,13 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
-                
-                TestThreadMessage d = {"1"}; //Transmit value that arm has picked up the block
-                sendTestThreadValue(d);
-                
                 *state = SENSOR_READING_1;
             }
-            else
+            else 
             {
-                ArmMessage am_0 = {BASE_MOTOR, MOTOR_BACKWARD};
-                sendArmData(am_0);
-                
-                TestThreadMessage d = {"2"}; //Transmit value that arm has dropped the block
-                sendTestThreadValue(d);
-                
-                *state = SENSOR_READING_2;
+                    ArmMessage am_0 = {BASE_MOTOR, MOTOR_BACKWARD};
+                    sendArmData(am_0);
+                    *state = SENSOR_READING_2;
             }
             break;
             
@@ -46,8 +38,16 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
-                read_jointPot();
-                *state = SENSOR_READING_5;
+                if (*status == '1')
+                {
+                    read_jointPot();
+                    *state = SENSOR_READING_5;
+                }
+                if (*status == '0')
+                {
+                    read_basePot();
+                    *state = SENSOR_READING_0;
+                }
             }
             break;
         
@@ -58,8 +58,11 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_2 = {BASE_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
-                read_jointPot();
-                *state = SENSOR_READING_5;
+                if (*status == '0')
+                {
+                    read_jointPot();
+                    *state = SENSOR_READING_5;
+                }
             }
             break;
             
@@ -125,6 +128,11 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
                 sendArmData(am_3);
+                if (*status == '1')
+                {
+                    TestThreadMessage d = {"2"}; //Transmit value that arm has dropped the block
+                    sendTestThreadValue(d);
+                }
                 *count = 0;
                 *state = SENSOR_READING_3;
             }
@@ -141,6 +149,11 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
                 sendArmData(am_3);
+                if (*status == '0')
+                {
+                    TestThreadMessage d = {"1"}; //Transmit value that arm has picked up the block
+                    sendTestThreadValue(d);
+                }
                 *count = 0;
                 *state = SENSOR_READING_3;
             }

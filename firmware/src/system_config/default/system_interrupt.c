@@ -83,6 +83,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 void IntHandlerDrvTmrInstance0(void)
 {
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    /*
     dbgOutputLoc(DLOC_ISR_ADC_ENTERED);
     
     //Grab value from ADC -> convert using routine in sensorQueue.c
@@ -91,12 +92,12 @@ void IntHandlerDrvTmrInstance0(void)
     
     //Send to sensor queue
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);
-    sendSensorData(sm, &xHigherPriorityTaskWoken);
+    sendSensorDataFromISR(sm, &xHigherPriorityTaskWoken);
     dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_AFTER);
     
     dbgOutputLoc(DLOC_ISR_ADC_LEAVING);
     
-    
+    */
     dbgOutputLoc(DLOC_ISR_TIMER_ENTERED);
     
     static int count = 0;

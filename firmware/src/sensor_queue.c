@@ -69,7 +69,7 @@ SensorMessage receiveSensorData(){
     return data;
 }
 
-void sendSensorData(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken) {
+void sendSensorDataFromISR(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken) {
     dbgOutputLoc(SENSOR_QUEUE_TX_BEGIN);
     if (sensorQueueHandle == NULL){
         debugFail();
@@ -80,3 +80,14 @@ void sendSensorData(SensorMessage data, BaseType_t* xHigherPriorityTaskWoken) {
     dbgOutputLoc(SENSOR_QUEUE_TX_END);
 }
 
+
+void sendSensorData(SensorMessage data) {
+    dbgOutputLoc(SENSOR_QUEUE_TX_BEGIN);
+    if (sensorQueueHandle == NULL){
+        debugFail();
+    }
+    if (xQueueSend(sensorQueueHandle, &data, (TickType_t) 10) != pdPASS){
+        debugFail();
+    }
+    dbgOutputLoc(SENSOR_QUEUE_TX_END);
+}

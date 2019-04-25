@@ -57,7 +57,20 @@ void COMMUNICATION_RX_Tasks(void) {
                     }
                 }
             }
+            char msg[512];
+            if(json_getVal(json_statement, tokens, rVal, "status", msg) == 0){
+                    //Grab value from ADC -> convert using routine in sensorQueue.c
+                    int pot_value = convertToDegrees(DRV_ADC_SamplesRead(14));
+                    SensorMessage sm = {pot_value, msg, "degrees"};
 
+                    //Send to sensor queue
+                    dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_BEFORE);
+                    sendSensorData(sm);
+                    dbgOutputLoc(DLOC_ISR_ADC_QUEUE_TX_AFTER);
+
+                    dbgOutputLoc(DLOC_ISR_ADC_LEAVING);
+                }
+            
             if (valid_json && valid_checksum) {
                 received++;
                 // extract seq number received
@@ -79,17 +92,13 @@ void COMMUNICATION_RX_Tasks(void) {
                 seq_exp = seq_recv + 1;
                 
                 //extract data
-                char msg[512];
+                /*char msg[512];
                 if(json_getVal(json_statement, tokens, rVal, "msg", msg) == 0){
                     //TestThreadMessage data;
                     //data.msg = msg;
                     //sendTestThreadValue(data);
                 }
-                //if(json_getVal(json_statement, tokens, rVal, "status", status) == 0){
-                    //TestThreadMessage data;
-                    //data.msg = msg;
-                    //sendTestThreadValue(data);
-                //}
+                 */
             }
         }
     }
