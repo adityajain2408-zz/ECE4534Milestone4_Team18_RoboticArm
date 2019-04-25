@@ -33,6 +33,7 @@ typedef enum
     SENSOR_READING_7,
     SENSOR_READING_8,
     SENSOR_READING_9,
+    SENSOR_READING_10,
 } SENSOR_STATES;
 
 void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int * count);

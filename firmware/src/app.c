@@ -90,7 +90,7 @@ void APP_Initialize ( void )
 void APP_Tasks ( void )
 {
     dbgOutputLoc(DLOC_TASK_ENTERED_APP);
-    SENSOR_STATES state = SENSOR_READING_8;
+    SENSOR_STATES state = SENSOR_READING_0;
     dbgOutputLoc(DLOC_BEFORE_WHILE_APP);
     int num = 0;    
     while(1){

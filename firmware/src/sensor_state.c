@@ -21,6 +21,7 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             {
                 ArmMessage am_0 = {BASE_MOTOR, MOTOR_FORWARD};
                 sendArmData(am_0);
+                
                 TestThreadMessage d = {"1"}; //Transmit value that arm has picked up the block
                 sendTestThreadValue(d);
                 
@@ -33,11 +34,12 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
                 
                 TestThreadMessage d = {"2"}; //Transmit value that arm has dropped the block
                 sendTestThreadValue(d);
+                
                 *state = SENSOR_READING_2;
             }
             break;
             
-        case SENSOR_READING_1: //STOP base motor coming from left
+        case SENSOR_READING_1: // STOP base motor coming from left
             dbgOutputVal(potVal);
             
             if (potVal <= 3)
@@ -49,7 +51,7 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             }
             break;
         
-        case SENSOR_READING_2: //STOP base motor coming from right
+        case SENSOR_READING_2: // STOP base motor coming from right
             dbgOutputVal(potVal);
             
             if (potVal >= 14)
@@ -97,7 +99,7 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
                 ArmMessage am_2 = {JOINT_MOTOR, MOTOR_STOP};
                 sendArmData(am_2);
                 read_basePot();
-                *state = SENSOR_READING_3;
+                *state = SENSOR_READING_10;
             }
             break;
         
@@ -111,16 +113,15 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
                 read_basePot();
                 *state = SENSOR_READING_0;
             }
-            
             break;
             
         case SENSOR_READING_8: //Gripper motor open
-            if (*count == 10) // after 1.5 ms 
+            if (*count == 10) // after 1.5 s 
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_OPEN};
                 sendArmData(am_3);
             }
-            if (*count == 20) // after 3 ms
+            if (*count == 20) // after 3 s
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
                 sendArmData(am_3);
@@ -131,12 +132,12 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             break;
         
         case SENSOR_READING_9: //Gripper motor close
-            if (*count == 10) // after 1.5 ms 
+            if (*count == 10) // after 1.5 s 
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_CLOSE};
                 sendArmData(am_3);
             }
-            if (*count == 20) // after 3 ms
+            if (*count == 20) // after 3 s
             {
                 ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
                 sendArmData(am_3);
@@ -146,6 +147,19 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int
             *count = *count + 1;            
             break;
         
+        case SENSOR_READING_10: // Check base motor position and guide gripper to open or close
+            dbgOutputVal(potVal);
+            
+            if (potVal >= 9)
+            {
+                *state = SENSOR_READING_9;
+            }
+            else
+            {
+                *state = SENSOR_READING_8;
+            }
+            break;
+            
         default:
             debugFail();
             break;
