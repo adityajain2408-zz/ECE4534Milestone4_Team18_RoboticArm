@@ -85,6 +85,11 @@ void COMMUNICATION_RX_Tasks(void) {
                     //data.msg = msg;
                     //sendTestThreadValue(data);
                 }
+                //if(json_getVal(json_statement, tokens, rVal, "status", status) == 0){
+                    //TestThreadMessage data;
+                    //data.msg = msg;
+                    //sendTestThreadValue(data);
+                //}
             }
         }
     }

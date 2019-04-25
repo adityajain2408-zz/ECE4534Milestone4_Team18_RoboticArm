@@ -76,6 +76,37 @@
     }
     
     /*
+     * Open the gripper
+     */
+    void gripperMotor_Open()
+    {
+        
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_12, false); //Gray off - relay module - pic pin # 8
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_3, true); //black on - relay module - pic pin # 9
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, true); //Turning the LED on 
+    }
+    
+    /*
+     * Close the gripper
+     */
+    void gripperMotor_Close()
+    {
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_12, true); //Gray on - relay module - pic pin # 8
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_3, false); //black off - relay module - pic pin # 9
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, true); //Turning the LED on
+    }
+    
+    /*
+     * Stop the gripper motor
+     */
+    void gripperMotor_Stop()
+    {
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_12, false); //Gray off - relay module - pic pin # 8
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_D, PORTS_BIT_POS_3, false); //black off - relay module - pic pin # 9
+        PLIB_PORTS_PinWrite(PORTS_ID_0, PORT_CHANNEL_A, PORTS_BIT_POS_3, false); //Turning the LED off 
+    }
+    
+    /*
      * Start Reading Joint Pot
      */
     void read_jointPot()
@@ -119,6 +150,22 @@
         if (someMotorType == JOINT_MOTOR && someMotorDirection == MOTOR_DOWN)
         {
             jointMotor_Down();
+        }
+        
+        // GRIPPER MOTOR
+        
+        //Joint Motor
+        if (someMotorType == GRIPPER_MOTOR && someMotorDirection == MOTOR_STOP)
+        {
+            gripperMotor_Stop();
+        }
+        if (someMotorType == GRIPPER_MOTOR && someMotorDirection == MOTOR_OPEN)
+        {
+            gripperMotor_Open();
+        }
+        if (someMotorType == GRIPPER_MOTOR && someMotorDirection == MOTOR_CLOSE)
+        {
+            gripperMotor_Close();
         }
     }
 /* *****************************************************************************

@@ -12,6 +12,8 @@
 /* This section lists the other files that are included in this file.
  */
 #include "debug.h"
+#include "arm.h"
+#include "arm_control.h"
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
@@ -29,9 +31,11 @@ typedef enum
     SENSOR_READING_5,
     SENSOR_READING_6,
     SENSOR_READING_7,
+    SENSOR_READING_8,
+    SENSOR_READING_9,
 } SENSOR_STATES;
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal);
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int * count);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

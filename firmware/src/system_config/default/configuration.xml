@@ -257,11 +257,13 @@
         <Name dnOrder="0">drv_tmr_static.h</Name>
         <Path dnOrder="1">Header&amp;#160;Files/app/system_config/default/framework/driver/tmr</Path>
         <Checksum dnOrder="2">D22AC818237042BB7D641DC78DE17E8D</Checksum>
+        <ProjectFileChecksum dnOrder="3">06E21AE4CE7C3F0F1FE9724AFEC74812</ProjectFileChecksum>
       </Template>
       <Template dnOrder="5">
         <Name dnOrder="0">drv_tmr_mapping.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/tmr/src</Path>
         <Checksum dnOrder="2">314E75640CA6EE8232D80D0B0DC4F1D8</Checksum>
+        <ProjectFileChecksum dnOrder="3">F166F3D3FEFBD805EB1DBA8366069B36</ProjectFileChecksum>
       </Template>
       <Template dnOrder="6">
         <Name dnOrder="0">communication_test.h</Name>
@@ -378,6 +380,7 @@
         <Name dnOrder="0">drv_tmr_static.c</Name>
         <Path dnOrder="1">Source&amp;#160;Files/app/system_config/default/framework/driver/tmr/src</Path>
         <Checksum dnOrder="2">226CB906265B8C6C2FF146EDC3C2380E</Checksum>
+        <ProjectFileChecksum dnOrder="3">80DCBC874D1804D4707F9D517C7A8124</ProjectFileChecksum>
       </Template>
       <Template dnOrder="31">
         <Name dnOrder="0">rtos_hooks.c</Name>

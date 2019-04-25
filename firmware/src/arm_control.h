@@ -32,6 +32,12 @@ void jointMotor_Down();
 
 void jointMotor_Stop();
 
+void gripperMotor_Open();
+
+void gripperMotor_Close();
+
+void gripperMotor_Stop();
+
 void read_basePot();
 
 void read_jointPot();

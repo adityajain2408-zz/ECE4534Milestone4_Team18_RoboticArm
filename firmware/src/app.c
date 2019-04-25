@@ -90,12 +90,12 @@ void APP_Initialize ( void )
 void APP_Tasks ( void )
 {
     dbgOutputLoc(DLOC_TASK_ENTERED_APP);
-    SENSOR_STATES state = SENSOR_READING_0;
+    SENSOR_STATES state = SENSOR_READING_8;
     dbgOutputLoc(DLOC_BEFORE_WHILE_APP);
-    
+    int num = 0;    
     while(1){
        SensorMessage result = receiveSensorData();
-       sensorState(&state, result, result.potValue);
+       sensorState(&state, result, result.potValue, &num);
     }
 }
 

@@ -11,8 +11,7 @@
 #include "sensor_state.h"
 
 
-void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
-    
+void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal, int * count){
     switch(*state){
         case SENSOR_READING_0:
             read_basePot();
@@ -36,8 +35,6 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
                 sendTestThreadValue(d);
                 *state = SENSOR_READING_2;
             }
-            
-            
             break;
             
         case SENSOR_READING_1: //STOP base motor coming from left
@@ -64,7 +61,7 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
             }
             break;
             
-        case SENSOR_READING_3: // gripper
+        case SENSOR_READING_3: // after gripper movement
             dbgOutputVal(potVal);
             read_jointPot();
             *state = SENSOR_READING_4;
@@ -117,6 +114,38 @@ void sensorState(SENSOR_STATES * state, SensorMessage sensorMsg, int potVal){
             
             break;
             
+        case SENSOR_READING_8: //Gripper motor open
+            if (*count == 10) // after 1.5 ms 
+            {
+                ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_OPEN};
+                sendArmData(am_3);
+            }
+            if (*count == 20) // after 3 ms
+            {
+                ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
+                sendArmData(am_3);
+                *count = 0;
+                *state = SENSOR_READING_3;
+            }
+            *count = *count + 1;            
+            break;
+        
+        case SENSOR_READING_9: //Gripper motor close
+            if (*count == 10) // after 1.5 ms 
+            {
+                ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_CLOSE};
+                sendArmData(am_3);
+            }
+            if (*count == 20) // after 3 ms
+            {
+                ArmMessage am_3 = {GRIPPER_MOTOR, MOTOR_STOP};
+                sendArmData(am_3);
+                *count = 0;
+                *state = SENSOR_READING_3;
+            }
+            *count = *count + 1;            
+            break;
+        
         default:
             debugFail();
             break;
